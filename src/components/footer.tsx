@@ -25,7 +25,7 @@ export function Footer() {
           {/* Company Info */}
           <div className="space-y-4">
             <Link href="/" className="text-2xl font-bold hover:text-hover transition-colors">
-              Sketchs.Store
+              GoKits.art
             </Link>
             <p className="text-sm text-primary-foreground/80">
               Transforming creativity into premium art supplies since 2024. Quality materials for artists of all levels.
@@ -152,7 +152,7 @@ export function Footer() {
         <div className="mt-12 pt-8 border-t border-primary-foreground/10">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-sm text-primary-foreground/60">
-              © {new Date().getFullYear()} Sketchs.Store. All rights reserved.
+              © {new Date().getFullYear()} GoKits.art. All rights reserved.
             </p>
             <div className="flex gap-6">
               <Link href="/privacy" className="text-sm text-primary-foreground/60 hover:text-hover transition-colors">

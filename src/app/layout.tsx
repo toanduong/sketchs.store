@@ -11,7 +11,7 @@ const _geist = Geist({ subsets: ["latin"] })
 const _geistMono = Geist_Mono({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "ArtStudio - Premium Art Supplies",
+  title: "GoKits.art - Premium Art Supplies",
   description: "Shop premium sketching supplies, brushes, and watercolor paints",
   generator: "v0.app",
   icons: {

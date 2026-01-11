@@ -51,8 +51,8 @@ export function ContactForm() {
               </div>
               <div>
                 <h3 className="font-semibold mb-1">Email</h3>
-                <p className="text-muted-foreground">support@sketchs.store</p>
-                <p className="text-muted-foreground">sales@sketchs.store</p>
+                <p className="text-muted-foreground">support@gokits.art</p>
+                <p className="text-muted-foreground">sales@gokits.art</p>
               </div>
             </div>
 

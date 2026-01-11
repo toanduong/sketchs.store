@@ -17,20 +17,20 @@ export function Navbar() {
             <div className="flex items-center justify-center w-10 h-10 bg-hover rounded-md">
               <span className="font-bold text-white text-base">G</span>
             </div>
-            <span className="font-semibold text-lg hidden sm:inline">okits</span>
+            <span className="font-semibold text-lg hidden sm:inline">oKits.art</span>
           </Link>
 
           <div className="hidden md:flex items-center gap-6">
             <Link href="/" className="text-foreground hover:text-hover transition-colors">
               Home
             </Link>
-            <Link href="/" className="text-foreground hover:text-hover transition-colors">
+            <Link href="/#products" className="text-foreground hover:text-hover transition-colors">
               Products
             </Link>
-            <Link href="/" className="text-foreground hover:text-hover transition-colors">
+            <Link href="/about" className="text-foreground hover:text-hover transition-colors">
               About
             </Link>
-            <Link href="/" className="text-foreground hover:text-hover transition-colors">
+            <Link href="/contact" className="text-foreground hover:text-hover transition-colors">
               Contact
             </Link>
           </div>
