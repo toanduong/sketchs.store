@@ -1,6 +1,5 @@
 "use client"
 
-import { motion } from "framer-motion"
 import { ReactNode } from "react"
 
 interface PageTransitionProps {
@@ -10,17 +9,10 @@ interface PageTransitionProps {
 
 export function PageTransition({ children, className = "" }: PageTransitionProps) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -20 }}
-      transition={{
-        duration: 0.5,
-        ease: [0.6, -0.05, 0.01, 0.99]
-      }}
-      className={className}
+    <div
+      className={`animate-in fade-in slide-in-from-bottom-4 duration-500 ${className}`}
     >
       {children}
-    </motion.div>
+    </div>
   )
 }

@@ -3,7 +3,6 @@
 import { useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import type { Product } from "@/lib/products"
@@ -28,68 +27,10 @@ export function ProductDetailClient({ product, relatedProducts }: ProductDetailC
     setTimeout(() => setAdded(false), 2000)
   }
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2
-      }
-    }
-  }
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5,
-        ease: [0.6, -0.05, 0.01, 0.99]
-      }
-    }
-  }
-
-  const imageVariants = {
-    hidden: { opacity: 0, scale: 0.95 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: {
-        duration: 0.6,
-        ease: [0.6, -0.05, 0.01, 0.99]
-      }
-    }
-  }
-
-  const relatedCardVariants = {
-    hidden: { opacity: 0, y: 30, scale: 0.95 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: {
-        duration: 0.5,
-        ease: [0.6, -0.05, 0.01, 0.99]
-      }
-    }
-  }
-
   return (
-    <motion.main
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -20 }}
-      transition={{ duration: 0.5, ease: [0.6, -0.05, 0.01, 0.99] }}
-      className="min-h-screen pt-20 pb-12"
-    >
+    <main className="min-h-screen pt-20 pb-12 animate-in fade-in slide-in-from-bottom-4 duration-500">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.4 }}
-        >
+        <div className="animate-in fade-in slide-in-from-left-4 duration-400">
           <Link
             href="/"
             className="inline-flex items-center text-sm text-muted-foreground hover:text-hover transition-colors"
@@ -97,21 +38,11 @@ export function ProductDetailClient({ product, relatedProducts }: ProductDetailC
             <ChevronLeft className="w-4 h-4 mr-1" />
             Back to shop
           </Link>
-        </motion.div>
+        </div>
 
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 mt-8"
-        >
-          <motion.div variants={itemVariants} className="flex flex-col gap-4">
-            <motion.div
-              variants={imageVariants}
-              className="relative w-full aspect-square bg-muted rounded-lg overflow-hidden"
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.3 }}
-            >
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 mt-8">
+          <div className="flex flex-col gap-4 animate-in fade-in slide-in-from-bottom-4 duration-500 delay-200">
+            <div className="relative w-full aspect-square bg-muted rounded-lg overflow-hidden transition-transform duration-300 hover:scale-[1.02]">
               <Image
                 src={product.image || "/placeholder.svg"}
                 alt={product.name}
@@ -119,38 +50,25 @@ export function ProductDetailClient({ product, relatedProducts }: ProductDetailC
                 className="object-cover"
                 priority
               />
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
 
-          <motion.div variants={itemVariants} className="flex flex-col justify-between">
+          <div className="flex flex-col justify-between animate-in fade-in slide-in-from-bottom-4 duration-500 delay-300">
             <div className="space-y-6">
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3, duration: 0.5 }}
-              >
+              <div className="animate-in fade-in slide-in-from-bottom-2 duration-500 delay-300">
                 <span className="inline-block px-3 py-1 bg-hover text-white rounded-full text-xs font-medium uppercase tracking-wide mb-3">
                   {product.category}
                 </span>
                 <h1 className="text-4xl font-bold mb-2">{product.name}</h1>
                 <p className="text-2xl font-semibold text-primary">${product.price}</p>
-              </motion.div>
+              </div>
 
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4, duration: 0.5 }}
-              >
+              <div className="animate-in fade-in slide-in-from-bottom-2 duration-500 delay-400">
                 <h3 className="font-semibold mb-2">Description</h3>
                 <p className="text-muted-foreground leading-relaxed">{product.description}</p>
-              </motion.div>
+              </div>
 
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5, duration: 0.5 }}
-                className="space-y-3 pt-4 border-t border-border"
-              >
+              <div className="space-y-3 pt-4 border-t border-border animate-in fade-in slide-in-from-bottom-2 duration-500 delay-500">
                 <div className="flex items-start gap-3">
                   <Truck className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
                   <div>
@@ -165,37 +83,28 @@ export function ProductDetailClient({ product, relatedProducts }: ProductDetailC
                     <p className="text-xs text-muted-foreground">Hassle-free returns policy</p>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             </div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6, duration: 0.5 }}
-              className="space-y-4 pt-8 border-t border-border"
-            >
+            <div className="space-y-4 pt-8 border-t border-border animate-in fade-in slide-in-from-bottom-2 duration-500 delay-600">
               <div className="flex items-center gap-4">
                 <div className="flex items-center border-2 border-input rounded-lg overflow-hidden">
-                  <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
+                  <button
                     onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                    className="px-4 py-2 hover:bg-hover hover:text-white transition-colors font-medium"
+                    className="px-4 py-2 hover:bg-hover hover:text-white transition-all duration-200 active:scale-95 font-medium"
                   >
                     −
-                  </motion.button>
+                  </button>
                   <span className="px-6 py-2 font-medium min-w-16 text-center border-x-2 border-input bg-background">{quantity}</span>
-                  <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
+                  <button
                     onClick={() => setQuantity(quantity + 1)}
-                    className="px-4 py-2 hover:bg-hover hover:text-white transition-colors font-medium"
+                    className="px-4 py-2 hover:bg-hover hover:text-white transition-all duration-200 active:scale-95 font-medium"
                   >
                     +
-                  </motion.button>
+                  </button>
                 </div>
               </div>
-              <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+              <div className="transition-transform duration-200 active:scale-[0.98]">
                 <Button onClick={handleAddToCart} size="lg" className="w-full" variant={added ? "default" : "outline"}>
                   {added ? (
                     <>
@@ -209,42 +118,20 @@ export function ProductDetailClient({ product, relatedProducts }: ProductDetailC
                     </>
                   )}
                 </Button>
-              </motion.div>
-            </motion.div>
-          </motion.div>
-        </motion.div>
+              </div>
+            </div>
+          </div>
+        </div>
 
         {relatedProducts.length > 0 && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.7, duration: 0.5 }}
-            className="border-t border-border pt-12"
-          >
+          <div className="border-t border-border pt-12 animate-in fade-in slide-in-from-bottom-4 duration-500 delay-700">
             <h2 className="text-2xl font-bold mb-6">Related Products</h2>
-            <motion.div
-              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
-              initial="hidden"
-              animate="visible"
-              variants={{
-                hidden: {},
-                visible: {
-                  transition: {
-                    staggerChildren: 0.1
-                  }
-                }
-              }}
-            >
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {relatedProducts.map((relatedProduct, index) => (
-                <motion.div
+                <div
                   key={relatedProduct.id}
-                  variants={relatedCardVariants}
-                  initial="hidden"
-                  animate="visible"
-                  whileHover={{
-                    y: -8,
-                    transition: { duration: 0.3 }
-                  }}
+                  className="animate-in fade-in slide-in-from-bottom-6 duration-500 transition-transform hover:-translate-y-2"
+                  style={{ animationDelay: `${700 + index * 100}ms` }}
                 >
                   <Card className="overflow-hidden group hover:shadow-lg hover:border-hover transition-all duration-300 h-full border-2 border-transparent">
                     <Link href={`/products/${relatedProduct.id}`}>
@@ -272,12 +159,12 @@ export function ProductDetailClient({ product, relatedProducts }: ProductDetailC
                       </div>
                     </div>
                   </Card>
-                </motion.div>
+                </div>
               ))}
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
         )}
       </div>
-    </motion.main>
+    </main>
   )
 }

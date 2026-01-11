@@ -1,7 +1,6 @@
 "use client"
 
 import { useState } from "react"
-import { motion } from "framer-motion"
 import { ProductCard } from "@/components/product-card"
 import { products } from "@/lib/products"
 
@@ -32,23 +31,11 @@ export function ProductGrid() {
           </div>
         </div>
 
-        <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
-          initial="hidden"
-          animate="visible"
-          variants={{
-            hidden: {},
-            visible: {
-              transition: {
-                staggerChildren: 0.1
-              }
-            }
-          }}
-        >
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {filtered.map((product, index) => (
             <ProductCard key={product.id} product={product} index={index} />
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   )
