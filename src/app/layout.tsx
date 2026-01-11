@@ -1,34 +1,51 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
+import type React from "react"
+import type { Metadata } from "next"
+import { Geist, Geist_Mono } from "next/font/google"
+import { Analytics } from "@vercel/analytics/next"
+import "./globals.css"
+import { Navbar } from "@/components/navbar"
+import { Provider } from "@/components/provider"
 
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-});
+const _geist = Geist({ subsets: ["latin"] })
+const _geistMono = Geist_Mono({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Sketchs Store | Elevate Your Creative Vision",
-  description: "The ultimate platform for modern creators to build, share, and scale their artistic output with precision and elegance.",
-  keywords: ["creative", "design", "store", "sketchs", "platform", "artists"],
-  authors: [{ name: "Sketchs" }],
-};
-
-export const viewport = {
-  width: "device-width",
-  initialScale: 1,
-};
+  title: "ArtStudio - Premium Art Supplies",
+  description: "Shop premium sketching supplies, brushes, and watercolor paints",
+  generator: "v0.app",
+  icons: {
+    icon: [
+      {
+        url: "/icon-light-32x32.png",
+        media: "(prefers-color-scheme: light)",
+      },
+      {
+        url: "/icon-dark-32x32.png",
+        media: "(prefers-color-scheme: dark)",
+      },
+      {
+        url: "/icon.svg",
+        type: "image/svg+xml",
+      },
+    ],
+    apple: "/apple-icon.png",
+  },
+}
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.variable}>
-        {children}
+    <html lang="en" suppressHydrationWarning>
+      <body className={`font-sans antialiased`}>
+        <Provider>
+          <Navbar />
+          {children}
+        </Provider>
+        <Analytics />
       </body>
     </html>
-  );
+  )
 }
